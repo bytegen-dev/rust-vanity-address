@@ -31,6 +31,7 @@ pub struct VanityOptions {
     pub pattern: String,
     pub pattern_type: PatternType,
     pub case_sensitive: bool,
+    #[allow(dead_code)]
     pub max_attempts: u64,
     pub max_time: Duration,
 }
@@ -53,6 +54,7 @@ impl VanityGenerator {
     }
 
     /// Generate a single vanity address
+    #[allow(dead_code)]
     pub async fn generate_single(&self, options: &VanityOptions) -> Result<Option<VanityResult>> {
         let start_time = Instant::now();
         let mut attempts = 0u64;
@@ -196,6 +198,7 @@ impl VanityGenerator {
     }
 
     /// Check if a public key matches the specified pattern
+    #[allow(dead_code)]
     fn matches_pattern(&self, public_key: &str, pattern: &str, pattern_type: &PatternType, case_sensitive: bool) -> bool {
         Self::matches_pattern_static(public_key, pattern, pattern_type, case_sensitive)
     }
@@ -292,6 +295,7 @@ impl VanityGenerator {
 }
 
 /// Validate that a pattern only contains valid Base58 characters
+#[allow(dead_code)]
 pub fn is_valid_base58_pattern(pattern: &str) -> bool {
     // Base58 excludes: 0, O, I, l
     let invalid_chars = ['0', 'O', 'I', 'l'];
@@ -314,6 +318,7 @@ pub fn validate_base58_pattern(pattern: &str) -> Result<(), Vec<char>> {
 }
 
 /// Get all valid Base58 characters as a string
+#[allow(dead_code)]
 pub fn get_valid_base58_chars() -> &'static str {
     "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
 }
