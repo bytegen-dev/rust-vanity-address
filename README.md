@@ -2,6 +2,50 @@
 
 A high-performance Solana vanity address generator built in Rust! This is a blazing-fast terminal-based version of the [TypeScript web application](https://github.com/bytegen-dev/vanity-address).
 
+## 🚀 Quick Start
+
+### Basic Usage
+
+```bash
+# Generate an address starting with "ABC"
+cargo run -- --pattern "ABC"
+
+# Generate an address containing "RUST"
+cargo run -- --pattern "RUST" --pattern-type contains
+
+# Generate 5 addresses ending with "XYZ"
+cargo run -- --pattern "XYZ" --pattern-type ends_with --count 5
+```
+
+### Advanced Options
+
+```bash
+# Full command with all options
+cargo run -- \
+  --pattern "BYTE" \
+  --pattern-type starts_with \
+  --case-sensitive \
+  --max-attempts 10000000 \
+  --max-time 300 \
+  --threads 12 \
+  --count 3 \
+  --format json \
+  --output results.json
+```
+
+### Performance Examples
+
+```bash
+# Pattern: "A" - Very fast (< 1 second)
+cargo run -- --pattern "A"
+
+# Pattern: "ABC" - Fast (~1-5 seconds)
+cargo run -- --pattern "ABC"
+
+# Pattern: "BYTE" - Moderate (~10-30 seconds)
+cargo run -- --pattern "BYTE"
+```
+
 ## 🚀 Performance Comparison
 
 | Metric        | TypeScript Version  | Rust Version          | Improvement        |
@@ -36,37 +80,6 @@ cd solana-vanity-rust
 cargo build --release
 ```
 
-## 🎯 Usage
-
-### Basic Usage
-
-```bash
-# Generate an address starting with "ABC"
-cargo run -- --pattern "ABC"
-
-# Generate an address containing "RUST"
-cargo run -- --pattern "RUST" --pattern-type contains
-
-# Generate 5 addresses ending with "XYZ"
-cargo run -- --pattern "XYZ" --pattern-type ends_with --count 5
-```
-
-### Advanced Options
-
-```bash
-# Full command with all options
-cargo run -- \
-  --pattern "BYTE" \
-  --pattern-type starts_with \
-  --case-sensitive \
-  --max-attempts 10000000 \
-  --max-time 300 \
-  --threads 12 \
-  --count 3 \
-  --format json \
-  --output results.json
-```
-
 ### Command Line Options
 
 | Option             | Short | Description                            | Default     |
@@ -81,31 +94,6 @@ cargo run -- \
 | `--format`         |       | Output format: text, json, csv         | text        |
 | `--output`         |       | Save results to file                   | None        |
 
-## 📊 Performance Examples
-
-### Simple Patterns (1-2 characters)
-
-```bash
-# Pattern: "A" - Very fast
-cargo run -- --pattern "A"
-# Expected: < 1 second, ~58 attempts
-```
-
-### Medium Patterns (3-4 characters)
-
-```bash
-# Pattern: "ABC" - Fast
-cargo run -- --pattern "ABC"
-# Expected: ~1-5 seconds, ~24,000 attempts
-```
-
-### Complex Patterns (5+ characters)
-
-```bash
-# Pattern: "BYTE" - Moderate
-cargo run -- --pattern "BYTE"
-# Expected: ~10-30 seconds, ~700,000 attempts
-```
 
 ## 🔧 Technical Details
 
