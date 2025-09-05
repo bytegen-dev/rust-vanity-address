@@ -94,7 +94,6 @@ cargo build --release
 | `--format`         |       | Output format: text, json, csv         | text        |
 | `--output`         |       | Save results to file                   | None        |
 
-
 ## 🔧 Technical Details
 
 ### Architecture
